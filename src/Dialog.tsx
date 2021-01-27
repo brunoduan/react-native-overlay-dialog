@@ -38,7 +38,11 @@ export default class Dialog extends Component<DialogProps, State> {
 
   create() {
     if (!this.rootSibling) {
-      this.rootSibling = new RootSiblings(this.renderView());
+      this.rootSibling = new RootSiblings(
+        this.renderView(),
+        this.props.rootTag,
+        undefined,
+        this.props.store);
     }
   }
 

@@ -1,13 +1,13 @@
 {
   "name": "react-native-overlay-dialog",
-  "version": "0.6.4",
+  "version": "0.7.1",
   "description": "React Native dialogs library for Android & iOS, especially for multi dialogs overlay.",
   "keywords": [
     "react",
     "react-native",
     "dialog"
   ],
-  "main": "lib",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "npx tsc --noEmit && npx eslint \"./src/**/*.@(ts|tsx)\" --fix",
     "test": "echo no tests",
@@ -33,7 +33,9 @@
   "author": "brunoduan <bruno.duan@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "react-native-root-siblings": "^3.2.2"
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "react-native-root-siblings": "3.1.303"
   },
   "devDependencies": {
     "@types/react": "^17.0",

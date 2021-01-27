@@ -29,6 +29,8 @@ export type DialogProps = {
   swipeDirection?: SwipeDirection | Array<SwipeDirection>;
   swipeThreshold?: number;
   useNativeDriver?: boolean;
+  rootTag?: number;
+  store?: object;
 }
 
 export type DialogTitleProps = {
