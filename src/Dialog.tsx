@@ -41,6 +41,10 @@ export default class Dialog extends Component<DialogProps, State> {
   }
 
   onBackButtonPressAndroid() {
+    if (Dialog.dialogCount === 0) {
+      return false;
+    }
+
     return true;
   }
 

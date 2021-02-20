@@ -1,6 +1,6 @@
 {
   "name": "react-native-overlay-dialog",
-  "version": "0.7.2",
+  "version": "0.7.4",
   "description": "React Native dialogs library for Android & iOS, especially for multi dialogs overlay.",
   "keywords": [
     "react",
@@ -11,8 +11,7 @@
   "scripts": {
     "lint": "npx tsc --noEmit && npx eslint \"./src/**/*.@(ts|tsx)\" --fix",
     "test": "echo no tests",
-    "build": "npx tsc",
-    "prepublishOnly": "npm run build"
+    "build": "npx tsc"
   },
   "files": [
     "lib",
