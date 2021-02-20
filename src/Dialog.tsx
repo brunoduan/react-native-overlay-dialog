@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BackHandler, NativeEventSubscription } from 'react-native';
 import RootSiblings from 'react-native-root-siblings';
 import DialogBase from './view/DialogBase';
 import type { DialogProps } from './types';
@@ -14,9 +15,12 @@ export default class Dialog extends Component<DialogProps, State> {
     this.state = {
       visible: props.visible,
     };
+
   }
 
   private rootSibling: RootSiblings | null = null;
+  private static dialogCount = 0;
+  private static subscriotion: NativeEventSubscription;
 
   componentDidMount() {
     const { visible } = this.state;
@@ -32,8 +36,12 @@ export default class Dialog extends Component<DialogProps, State> {
         this.create();
       }
     }
-    
+
     this.udpate();
+  }
+
+  onBackButtonPressAndroid() {
+    return true;
   }
 
   create() {
@@ -43,6 +51,11 @@ export default class Dialog extends Component<DialogProps, State> {
         this.props.rootTag,
         undefined,
         this.props.store);
+        if (++Dialog.dialogCount === 1) {
+          Dialog.subscriotion = BackHandler.addEventListener(
+            'hardwareBackPress',
+            this.onBackButtonPressAndroid);
+        }
     }
   }
 
@@ -50,6 +63,9 @@ export default class Dialog extends Component<DialogProps, State> {
     if (this.rootSibling) {
       this.rootSibling.destroy();
       this.rootSibling = null;
+      if (--Dialog.dialogCount === 0) {
+        Dialog.subscriotion.remove();
+      }
     }
   }
 
